@@ -8,6 +8,8 @@ namespace Vidly.Models
         public string Name { get; set; }
         public bool IsSubscribedToNewsLetter { get; set; }
         public DateTime? BirthDate { get; set; }
+        public MembershipType MembershipType { get; set; }
+        public int MembershipTypeId { get; set; }
 
     }
 }
