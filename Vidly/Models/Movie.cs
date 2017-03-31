@@ -10,5 +10,10 @@ namespace Vidly.Models
         public DateTime ReleaseDate { get; set; }
         public byte NumberInStock { get; set; }
         public byte NumberAvailable { get; set; }
+
+        public Genre Genre { get; set; }
+
+
+        public int GenreId { get; set; }
     }
 }
