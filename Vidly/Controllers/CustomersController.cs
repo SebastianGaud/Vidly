@@ -1,17 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
+using Vidly.Models;
 
 namespace Vidly.Controllers
 {
     public class CustomersController : Controller
     {
-        // GET: Customers
-        public ActionResult Index()
+        private ApplicationDbContext _context;
+
+        public CustomersController ()
         {
-            return View();
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose ( bool disposing )
+        {
+            _context.Dispose();
+        }
+
+        // GET: Customers
+        public ActionResult Index ()
+        {
+            return View( _context.Customers.ToList() );
         }
     }
 }
