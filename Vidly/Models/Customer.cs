@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Vidly.Models
 {
@@ -16,10 +17,11 @@ namespace Vidly.Models
         public DateTime? BirthDate { get; set; }
 
         [Display( Name = "Membership Type" )]
+        [ForeignKey( "MembershipTypeId" )]
         public MembershipType MembershipType { get; set; }
 
         [Display( Name = "Date of Birth" )]
-        public int MembershipTypeId { get; set; }
+        public byte MembershipTypeId { get; set; }
 
     }
 }

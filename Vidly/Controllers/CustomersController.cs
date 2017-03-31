@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using Vidly.Models;
+using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -34,6 +35,46 @@ namespace Vidly.Controllers
                 .Customers
                 .Include( c => c.MembershipType )
                 .SingleOrDefault( c => c.Id == id ) );
+        }
+
+        public ActionResult New ()
+        {
+            CustomerFormViewModel viewModel = new CustomerFormViewModel()
+            {
+                MembershipTypes = _context.MembershipTypes
+            };
+
+            return View( "CustomerForm" , viewModel );
+        }
+
+        public ActionResult Edit ( int id )
+        {
+            CustomerFormViewModel viewModel = new CustomerFormViewModel()
+            {
+                MembershipTypes = _context.MembershipTypes ,
+                Customer = _context.Customers.Single( c => c.Id == id )
+            };
+
+            return View( "CustomerForm" , viewModel );
+        }
+
+        [HttpPost]
+        public ActionResult Save ( Customer customer )
+        {
+            if ( customer.Id == 0 )
+            {
+                _context.Customers.Add( customer );
+            }
+            else
+            {
+                Customer customerInDb = _context.Customers.Single( c => c.Id == customer.Id );
+                customerInDb.Name = customer.Name;
+                customerInDb.BirthDate = customer.BirthDate;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
+            }
+            _context.SaveChanges();
+            return RedirectToAction( "Index" , "Customers" );
         }
     }
 }
