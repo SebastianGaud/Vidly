@@ -7,19 +7,28 @@
 
 
 <h2>Movies</h2>
- <table class="table table-bordered table-hover">
-    <thead>  
-        <tr>   
-            <th>Movie</th>     
-        </tr>  
-    </thead>
-    <tbody>
-        @foreach ( var movie in Model )
+
+@if ( !Model.Any() )
+{
+    <p>We don't have any movies yet.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Movie</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ( var movie in Model )
             {
                 <tr>
                     <td> @movie.Name </td>
                 </tr>
             }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+}
+
 
