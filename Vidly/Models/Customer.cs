@@ -21,7 +21,7 @@ namespace Vidly.Models
         [ForeignKey( "MembershipTypeId" )]
         public MembershipType MembershipType { get; set; }
 
-        [Display( Name = "Date of Birth" )]
+        [Display( Name = "Membership Type" )]
         [Min18ForMembership]
         public byte MembershipTypeId { get; set; }
 
