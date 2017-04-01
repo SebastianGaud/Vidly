@@ -41,6 +41,7 @@ namespace Vidly.Controllers
         {
             CustomerFormViewModel viewModel = new CustomerFormViewModel()
             {
+                Customer = new Customer() ,
                 MembershipTypes = _context.MembershipTypes
             };
 
