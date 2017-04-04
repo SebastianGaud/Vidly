@@ -32,6 +32,7 @@ namespace Vidly.Controllers.Api
             return Ok( Mapper.Map<Movie , MovieDTO>( movie ) );
         }
 
+        [HttpPut]
         public IHttpActionResult UpdateMovie ( int id , MovieDTO movieDto )
         {
             if ( !ModelState.IsValid )
@@ -53,6 +54,7 @@ namespace Vidly.Controllers.Api
             return Ok();
         }
 
+        [HttpDelete]
         public IHttpActionResult Deletemovie ( int id )
         {
             if ( !ModelState.IsValid )
@@ -73,6 +75,7 @@ namespace Vidly.Controllers.Api
             return Ok();
         }
 
+        [HttpPost]
         public IHttpActionResult CreateMovie ( MovieDTO movieDto )
         {
             if ( !ModelState.IsValid )
