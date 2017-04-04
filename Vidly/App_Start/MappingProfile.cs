@@ -1,8 +1,8 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Vidly.DTOS;
 using Vidly.Models;
 
-namespace Vidly.App_Start
+namespace Vidly
 {
     public class MappingProfile : Profile
     {
@@ -10,6 +10,8 @@ namespace Vidly.App_Start
         {
             Mapper.CreateMap<Customer , CustomerDTO>();
             Mapper.CreateMap<CustomerDTO , Customer>();
+            Mapper.CreateMap<Movie , MovieDTO>();
+            Mapper.CreateMap<MovieDTO , Movie>();
         }
     }
 }
