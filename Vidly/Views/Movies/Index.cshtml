@@ -44,7 +44,7 @@
                     {
                         data: "id",
                         render: function(data) {
-                            return "<button class='btn-link js-delete' data-customer-id=" + data + ">Delete</button>";
+                            return "<button class='btn-link js-delete' data-movie-id=" + data + ">Delete</button>";
                         }
                     }
                 ]
@@ -59,10 +59,10 @@
                         function(result) {
                             if (result) {
                                 $.ajax({
-                                    url: "/api/movies" + button.attr("data-movie-id"),
+                                    url: '/api/movies/' + button.attr("data-movie-id"),
                                     method: "DELETE",
                                     success: function() {
-                                        table.row(button.parents("tr").remove()).draw();
+                                        table.row(button.parents("tr").remove()).remove().draw();
                                     }
                                 });
                             }
