@@ -15,6 +15,8 @@ namespace Vidly.DTOS
 
         public DateTime? BirthDate { get; set; }
 
+        public MembershipTypeDTO MembershipType { get; set; }
+
         //        [Min18ForMembership]
         public byte MembershipTypeId { get; set; }
     }
